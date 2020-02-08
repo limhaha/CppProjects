@@ -9,4 +9,6 @@ int main(){
     cout << "peter's memory address = " << &peter << endl;
     cout << "sangwon's memory address = " << &sangwon << endl;
     return 0;
-} 
+}
+
+const float PI = 3.1415926;
