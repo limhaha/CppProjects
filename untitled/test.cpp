@@ -3,17 +3,14 @@
 using namespace std;
 
 int main(){
-    int n;
-    string star = "*";
-    string blank = "";
-    cin >> n;
-    for(int i=1; i<=n; i++) {
-        for(int j=n; j>i; j--){
-            blank = blank + " ";
+    int n, x;
+    cin >> n >> x;
+    int a;
+    for(int i=0; i<n; i++){
+        cin >> a;
+        if(a<x){
+            cout << a << " ";
         }
-        cout << blank << star << endl;
-        star = star + "*";
-        blank = "";
         cin.tie(NULL);
     }
     return 0;
