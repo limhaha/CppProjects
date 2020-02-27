@@ -23,17 +23,3 @@ int main() {
     return 0;
 }
 
-//using namespace std;
-//
-//const int MAX = 1000000;
-//
-//int main() {
-//    int n;
-//    cin >> n;
-//    int input = 0;
-//    int min = MAX;
-//    int max = -MAX;
-//
-//    for(int i=0; i<n; i++){
-//
-//}
