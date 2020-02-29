@@ -17,6 +17,7 @@ int main() {
         count++;
         if (n == a) {
             break;
+            
         }
     }
     cout << count << endl;
