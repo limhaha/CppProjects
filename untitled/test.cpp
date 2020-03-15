@@ -11,7 +11,7 @@ int main(){
         if(a<x){
             cout << a << " ";
         }
-        //cin.tie(NULL);
+        cin.tie(NULL);
     }
     return 0;
 }
