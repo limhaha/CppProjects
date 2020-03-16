@@ -56,6 +56,7 @@
       <updated>1580976221338</updated>
       <workItem from="1580976225175" duration="20207000" />
       <workItem from="1584281129487" duration="220000" />
+      <workItem from="1584370466072" duration="15000" />
     </task>
     <servers />
   </component>
@@ -87,9 +88,9 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.23.1440.877@0.23.1440.877" timestamp="1581933058533" />
-    <state x="397" y="294" key="com.intellij.ide.util.TipDialog" timestamp="1584281129648">
+    <state x="397" y="294" key="com.intellij.ide.util.TipDialog" timestamp="1584370479426">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="397" y="294" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1584281129648" />
+    <state x="397" y="294" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1584370479426" />
   </component>
 </project>
