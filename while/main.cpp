@@ -23,7 +23,7 @@ int main() {
     cout << count << endl;
     return 0;
 }
-//
+
 //using namespace std;
 //
 //const int MAX = 1000000;
