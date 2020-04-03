@@ -1,11 +1,19 @@
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "C"
   "CXX"
   )
 # The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_C
+  "/Users/halim/CLionProjects/untitled/test.c" "/Users/halim/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/test.c.o"
+  )
+set(CMAKE_C_COMPILER_ID "AppleClang")
+
+# The include file search paths:
+set(CMAKE_C_TARGET_INCLUDE_PATH
+  )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/halim/CLionProjects/untitled/compare.cpp" "/Users/halim/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/compare.cpp.o"
-  "/Users/halim/CLionProjects/untitled/test.cpp" "/Users/halim/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

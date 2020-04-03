@@ -150,32 +150,32 @@ compare.cpp.s:
 	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/compare.cpp.s
 .PHONY : compare.cpp.s
 
-test.o: test.cpp.o
+test.o: test.c.o
 
 .PHONY : test.o
 
 # target to build an object file
-test.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/test.cpp.o
-.PHONY : test.cpp.o
+test.c.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/test.c.o
+.PHONY : test.c.o
 
-test.i: test.cpp.i
+test.i: test.c.i
 
 .PHONY : test.i
 
 # target to preprocess a source file
-test.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/test.cpp.i
-.PHONY : test.cpp.i
+test.c.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/test.c.i
+.PHONY : test.c.i
 
-test.s: test.cpp.s
+test.s: test.c.s
 
 .PHONY : test.s
 
 # target to generate assembly for a file
-test.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/test.cpp.s
-.PHONY : test.cpp.s
+test.c.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/test.c.s
+.PHONY : test.c.s
 
 # Help Target
 help:
