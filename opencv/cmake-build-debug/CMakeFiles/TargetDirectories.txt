@@ -1,0 +1,3 @@
+/Users/halim/CLionProjects/opencv/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/halim/CLionProjects/opencv/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/halim/CLionProjects/opencv/cmake-build-debug/CMakeFiles/opencv.dir
