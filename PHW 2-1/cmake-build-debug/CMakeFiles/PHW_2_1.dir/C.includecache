@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/halim/CLionProjects/PHW 2-1/main.c
+stdio.h
+/Users/halim/CLionProjects/PHW 2-1/stdio.h
+conio.h
+/Users/halim/CLionProjects/PHW 2-1/conio.h
+alloc.h
+/Users/halim/CLionProjects/PHW 2-1/alloc.h
+stdlib.h
+/Users/halim/CLionProjects/PHW 2-1/stdlib.h
+

@@ -1,0 +1,3 @@
+/Users/halim/CLionProjects/PHW 2-2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/halim/CLionProjects/PHW 2-2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/halim/CLionProjects/PHW 2-2/cmake-build-debug/CMakeFiles/PHW_2_2.dir
