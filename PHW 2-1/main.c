@@ -1,93 +1,85 @@
-#include"stdio.h"
-#include"conio.h"
-#include"alloc.h"
-#include"stdlib.h"
-#define n 15
-struct node
-{
-    int data;
-    struct node *lptr;
-    struct node *rptr;
-};
-typedef struct node node;
-struct stack
-{
-    int top;
-    int number[n];
-    struct node *location[n];
-};
-typedef struct stack stack;
-void convert(node **);
-void display(node *);
-void main()
-{
-    node *root=NULL;
-    clrscr();
-    convert(&root);
-    printf("\ndata in binary tree :\n");
-    display(root);
-    getch();
-}
-void convert(node **root)
-{
-    char c;
-    int pl,level,x;
-    stack s;
-    node *p=NULL,*ploc=NULL;
-    node *newnode=(node *)malloc(sizeof(node));
-    s.top=-1;
+#include <stdio.h>
+#include <stdlib.h>
 
-    if(newnode==NULL)
-    {
-        printf("memory overflow");
-        return;
+#define SIZE 20
+
+struct stack {
+    int key;
+    struct stack *next
+};
+
+void push(int value);
+
+int pop();
+
+int stack_empty();
+
+int stack_full();
+
+void convert(int num);
+
+struct stack *top = NULL;
+
+int count = 0;
+
+int main() {
+
+    int num;
+    printf("Enter decimal number : ");
+    scanf("%d",&num);
+    printf("Binary equivalent : ");
+    convert(num);
+
+    return 0;
+}
+
+void push(int value) {
+    struct stack *newPtr;
+    newPtr = malloc(sizeof(struct stack));
+    if (newPtr != NULL) {
+        newPtr->key = value;
+        newPtr->next = top;
+        top = newPtr;
+        count++;
     }
-    if(*root==NULL)
-    {
-        *root=newnode;
-        (*root)->lptr=(*root)->rptr=NULL;
-        printf("enter level and data>");
-        scanf("%d%d",&level,&x);
-        (*root)->data=x;
-        s.location[0]=*root;
-        s.number[0]=level;
-        s.top=0;
+}
+
+int pop() {
+    int popValue;
+    popValue = top->key;
+    top = top->next;
+    count--;
+    return popValue;
+}
+
+int stack_empty() {
+    if (top == NULL) {
+        return 1;
+    } else {
+        return 0;
     }
-    l:printf("to enter a data(y/n)?");
-    c=getch();
-    if(c=='y')
-    {
-        printf("\nenter level and data>");
-        scanf("%d%d",&level,&x);
-        p=(node *)malloc(sizeof(node));
-        p->lptr=p->rptr=NULL;
-        p->data=x;
-        pl=s.number[s.top];
-        ploc=s.location[s.top];
-        if(level>pl)
-            ploc->lptr=p;
-        else
-        {
-            while(pl>level)
-            {
-                s.top=s.top+1;
-                pl=s.number[s.top];
-                ploc=s.location[s.top];
-            }
-            ploc->rptr=p;
-            s.top=s.top-1;
-        }
-        s.top=s.top-1;
-        s.number[s.top]=level;
-        s.location[s.top]=p;
-        goto l;
-    }}
-void display(node *p)
-{
-    if(p!=NULL)
-    {
-        printf(" %d ",p->data);
-        display(p->lptr);
-        display(p->rptr);
+}
+
+int stack_full() {
+    if (count >= SIZE) {
+        return 1;
+    } else {
+        return 0;
     }
+}
+
+
+void convert(int num){
+    int rem;
+
+    while(num!=0)
+    {
+        rem = num%2;
+        push(rem);
+        num /= 2;
+    }
+    while(top!= NULL) {
+        printf("%d ", pop());
+    }
+    printf("\n");
 }

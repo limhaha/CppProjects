@@ -1,132 +1,110 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct tree
-{
+
+typedef struct tree {
     int tree_level;
     int key;
     int childkey;
-    struct tree* leftchild;
-    struct tree* rightchild;
-}Tree;
+    struct tree *lptr;
+    struct tree *rptr;
+} Tree;
 
-void Convert_Bin_Tree(Tree** tree, int level, int key2, int childkey2);
-void search(Tree* tree, int key2);
-void preorder(Tree* tree);
+void convert(Tree **tree, int level, int data, int c_data);
 
-Tree* parentptr = NULL;
-Tree* searchtreeptr = NULL;
-Tree* newtreeptr = NULL;
+void search(Tree *tree, int data);
 
-void main()
-{
+void preorder(Tree *tree);
+
+Tree *pptr = NULL;
+Tree *sptr = NULL;
+Tree *newptr = NULL;
+
+int main() {
     int option;
-    int tree_level, key2, childkey2;
+    int tree_level, data, c_data;
 
-    printf("-----First binary tree-----\n");
+    printf("First\n");
 
-    do
-    {
-        printf("(1) : convert a tree , (2) : exit \n");
-        printf("Select a menu : ");
+    do {
+        printf("(1)convert, (2) exit\n");
         scanf("%d", &option);
-        switch (option)
-        {
+        switch (option) {
             case 1:
-                printf("Type the input data for each node of a general tree (level, key, child key)\n");
-                scanf("%d %d %d", &tree_level, &key2, &childkey2);
-                Convert_Bin_Tree(&newtreeptr, tree_level, key2, childkey2);
+                printf("Type data general tree");
+                scanf("%d %d %d", &tree_level, &data, &c_data);
+                convert(&newptr, tree_level, data, c_data);
                 break;
             case 2:
                 break;
         }
     } while (option != 2);
     printf("\n");
-    preorder(newtreeptr);
+    preorder(newptr);
 
-    printf("-----Second binary tree-----\n");
+    printf("second\n");
 
-    do
-    {
-        printf("(1) : convert a tree , (2) : exit \n");
-        printf("Select a menu : ");
+    do {
+        printf("(1)convert, (2) exit\n");
         scanf("%d", &option);
-        switch (option)
-        {
+        switch (option) {
             case 1:
-                printf("Type the input data for each node of a general tree (level, key, child key)\n");
-                scanf("%d %d %d", &tree_level, &key2, &childkey2);
-                Convert_Bin_Tree(&newtreeptr,tree_level, key2, childkey2);
+                printf("Type data general tree");
+                scanf("%d %d %d", &tree_level, &data, &c_data);
+                convert(&newptr, tree_level, data, c_data);
                 break;
             case 2:
                 break;
         }
     } while (option != 2);
     printf("\n");
-    preorder(newtreeptr);
+    preorder(newptr);
 }
-/* Convert a general tree to binary tree
-   input : address of tree, level of tree, key and child key , output: none
-*/
-void Convert_Bin_Tree(Tree** tree, int level, int key2, int childkey2)
-{
-    Tree* ptr = NULL;
-    searchtreeptr = NULL;
 
-    if (tree != NULL)
-    {
-        search(*tree, key2);
+void convert(Tree **tree, int level, int data, int c_data) {
+    Tree *ptr = NULL;
+    sptr = NULL;
+
+    if (tree != NULL) {
+        search(*tree, data);
     }
 
-    ptr = (struct tree*)malloc(sizeof(struct tree));
+    ptr = (struct tree *) malloc(sizeof(struct tree));
     ptr->tree_level = level;
-    ptr->key = key2;
-    ptr->childkey = childkey2;
-    ptr->leftchild = NULL;
-    ptr->rightchild = NULL;
-    if (*tree == NULL)
-    {
+    ptr->key = data;
+    ptr->childkey = c_data;
+    ptr->lptr = NULL;
+    ptr->rptr = NULL;
+
+    if (*tree == NULL) {
         *tree = ptr;
-        parentptr = ptr;
-    }
-    else
-    {
-        if (searchtreeptr && searchtreeptr ->tree_level + 1 == ptr->tree_level)
-        {
-            searchtreeptr->leftchild = ptr;
-            parentptr = ptr;
-        }
-        else
-        {
-            parentptr->rightchild = ptr;
-            parentptr = ptr;
+        pptr = ptr;
+    } else {
+        if (sptr && (sptr->tree_level + 1 == ptr->tree_level)) {
+            sptr->lptr = ptr;
+            pptr = ptr;
+        } else {
+            pptr->rptr = ptr;
+            pptr = ptr;
         }
     }
 }
-/* Search node appropriate location in tree
-   input: address of tree and key , output: none
-*/
-void search(Tree* tree, int key2)
-{
-    if (tree != NULL)
-    {
-        if (tree->childkey == key2)
-        {
-            searchtreeptr = tree;
+
+void search(Tree *tree, int data) {
+    if (tree != NULL) {
+        if (tree->childkey == data) {
+            sptr = tree;
             return;
         }
-        search(tree->leftchild, key2);
-        search(tree->rightchild, key2);
+
+        search(tree->lptr, data);
+        search(tree->rptr, data);
     }
 }
 
-/* Print binary tree's keys as preorder format
-   input: address of tree , output: none
-*/
-void preorder(Tree* tree)
-{
-    if (tree)
-    {
+void preorder(Tree *tree) {
+    if (tree) {
         printf("%d\n", tree->key);
-        preorder(tree->leftchild);
-        preorder(tree->rightchild);
+        preorder(tree->lptr);
+        preorder(tree->rptr);
     }
+}
