@@ -12,16 +12,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="491aa43d-3538-4b48-9109-d1a2234c2d7b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../PHW 2-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PHW 2-1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PHW 2-1/cmake-build-debug/CMakeFiles/PHW_2_1.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../PHW 2-1/cmake-build-debug/CMakeFiles/PHW_2_1.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PHW 2-1/cmake-build-debug/CMakeFiles/Progress/1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PHW 2-1/cmake-build-debug/CMakeFiles/Progress/count.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PHW 2-1/cmake-build-debug/PHW_2_1" beforeDir="false" afterPath="$PROJECT_DIR$/../PHW 2-1/cmake-build-debug/PHW_2_1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PHW 2-1/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../PHW 2-1/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW1/cmake-build-debug/HW1" beforeDir="false" afterPath="$PROJECT_DIR$/../HW1/cmake-build-debug/HW1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW1/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../HW1/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/PHW_2_2.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/PHW_2_2.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/PHW_2_2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/PHW_2_2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../while/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../while/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../while/cmake-build-debug/CMakeFiles/while.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../while/cmake-build-debug/CMakeFiles/while.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../while/cmake-build-debug/CMakeFiles/while.dir/main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../while/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../while/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +30,20 @@
   </component>
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
@@ -65,6 +79,7 @@
       <updated>1586852800288</updated>
       <workItem from="1586852802084" duration="10219000" />
       <workItem from="1586926825775" duration="2107000" />
+      <workItem from="1586929849752" duration="2877000" />
     </task>
     <servers />
   </component>
@@ -72,22 +87,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="678" height="230" key="GridCell.Tab.0.bottom" timestamp="1586928951178">
+    <state width="678" height="203" key="GridCell.Tab.0.bottom" timestamp="1587003469370">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="678" height="230" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1586928951178" />
-    <state width="678" height="230" key="GridCell.Tab.0.center" timestamp="1586928951177">
+    <state width="678" height="203" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1587003469370" />
+    <state width="678" height="203" key="GridCell.Tab.0.center" timestamp="1587003469370">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="678" height="230" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1586928951177" />
-    <state width="678" height="230" key="GridCell.Tab.0.left" timestamp="1586928951177">
+    <state width="678" height="203" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1587003469370" />
+    <state width="678" height="203" key="GridCell.Tab.0.left" timestamp="1587003469369">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="678" height="230" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1586928951177" />
-    <state width="678" height="230" key="GridCell.Tab.0.right" timestamp="1586928951178">
+    <state width="678" height="203" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1587003469369" />
+    <state width="678" height="203" key="GridCell.Tab.0.right" timestamp="1587003469370">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="678" height="230" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1586928951178" />
+    <state width="678" height="203" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1587003469370" />
     <state width="1398" height="285" key="GridCell.Tab.1.bottom" timestamp="1586915924877">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -104,10 +119,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="285" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1586915924877" />
-    <state x="757" y="294" key="com.intellij.ide.util.TipDialog" timestamp="1586926826480">
+    <state x="757" y="294" key="com.intellij.ide.util.TipDialog" timestamp="1586929852073">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="757" y="294" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1586926826480" />
+    <state x="757" y="294" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1586929852073" />
     <state x="539" y="204" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1586863123228">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

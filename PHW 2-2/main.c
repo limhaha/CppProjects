@@ -20,45 +20,27 @@ Tree *sptr = NULL;
 Tree *newptr = NULL;
 
 int main() {
-    int option;
+    int n;
     int tree_level, data, c_data;
-
-    printf("First\n");
-
+    printf("\n1.add node  2.end  ");
     do {
-        printf("(1)convert, (2) exit\n");
-        scanf("%d", &option);
-        switch (option) {
+        printf("?:");
+        scanf("%d", &n);
+        switch (n) {
             case 1:
-                printf("Type data general tree");
+                printf("Type data general tree (level, key, child_key) : ");
                 scanf("%d %d %d", &tree_level, &data, &c_data);
                 convert(&newptr, tree_level, data, c_data);
                 break;
             case 2:
                 break;
         }
-    } while (option != 2);
+    } while (n != 2);
     printf("\n");
     preorder(newptr);
 
-    printf("second\n");
-
-    do {
-        printf("(1)convert, (2) exit\n");
-        scanf("%d", &option);
-        switch (option) {
-            case 1:
-                printf("Type data general tree");
-                scanf("%d %d %d", &tree_level, &data, &c_data);
-                convert(&newptr, tree_level, data, c_data);
-                break;
-            case 2:
-                break;
-        }
-    } while (option != 2);
-    printf("\n");
-    preorder(newptr);
 }
+
 
 void convert(Tree **tree, int level, int data, int c_data) {
     Tree *ptr = NULL;
@@ -90,7 +72,9 @@ void convert(Tree **tree, int level, int data, int c_data) {
 }
 
 void search(Tree *tree, int data) {
+
     if (tree != NULL) {
+
         if (tree->childkey == data) {
             sptr = tree;
             return;
@@ -102,6 +86,7 @@ void search(Tree *tree, int data) {
 }
 
 void preorder(Tree *tree) {
+
     if (tree) {
         printf("%d\n", tree->key);
         preorder(tree->lptr);

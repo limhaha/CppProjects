@@ -1,186 +1,127 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-#define SIZE 10
-
-struct stack {
+typedef struct tree
+{
+    int tree_level;
     int key;
-    struct stack *next
-};
+    int childkey;
+    struct tree* leftchild;
+    struct tree* rightchild;
+}Tree;
 
-void push(int value);
+void Convert_Bin_Tree(Tree** tree, int level, int key2, int childkey2);
+void search(Tree* tree, int key2);
+void Preorder(Tree* tree);
 
-int pop();
+Tree* parentptr = NULL;
+Tree* searchtreeptr = NULL;
+Tree* newtreeptr = NULL;
 
-int stack_empty();
+void main()
+{
+    int option;
+    int tree_level, key2, childkey2;
 
-int stack_full();
+    printf("First binary tree\n");
 
-struct stack *top = NULL;
-int count = 0;
-
-int main() {
-    int num, key;
-
-    printf("*Enter Number*\n1.push\n2.pop\n3.End program\n?: ");
-    scanf("%d", &num);
-    while (num != 3) {
-        switch (num) {
+    do
+    {
+        printf("(1) : convert a tree , (2) : exit \n");
+        printf("Select a menu : ");
+        scanf("%d", &option);
+        switch (option)
+        {
             case 1:
-                if (stack_full()) {
-                    printf("Stack is full.\n");
-                    break;
-                } else {
-                    printf("Push value : ");
-                    scanf("%d", &key);
-                    push(key);
-                    break;
-                }
+                printf("Type the input data for each node of a general tree (level, key, child key)\n");
+                scanf("%d %d %d", &tree_level, &key2, &childkey2);
+                Convert_Bin_Tree(&newtreeptr, tree_level, key2, childkey2);
+                break;
             case 2:
-                if (stack_empty()) {
-                    printf("Stack is empty.\n");
-                    break;
-                }
-                else {
-                    printf("Pop value : %d\n", pop());
-                    break;
-                }
+                break;
         }
-                printf("? : ");
-                scanf("%d", &num);
+    } while (option != 2);
+    printf("\n");
+    Preorder(newtreeptr);
+
+    printf("Second binary treen");
+
+    do
+    {
+        printf("(1) : convert a tree , (2) : exit \n");
+        printf("Select a menu : ");
+        scanf("%d", &option);
+        switch (option)
+        {
+            case 1:
+                printf("Type the input data for each node of a general tree (level, key, child key)\n");
+                scanf("%d %d %d", &tree_level, &key2, &childkey2);
+                Convert_Bin_Tree(&newtreeptr,tree_level, key2, childkey2);
+                break;
+            case 2:
+                break;
+        }
+    } while (option != 2);
+    printf("\n");
+    Preorder(newtreeptr);
+}
+
+void Convert_Bin_Tree(Tree** tree, int level, int key2, int childkey2)
+{
+    Tree* ptr = NULL;
+    searchtreeptr = NULL;
+
+    if (tree != NULL)
+    {
+        search(*tree, key2);
+    }
+
+    ptr = (struct tree*)malloc(sizeof(struct tree));
+    ptr->tree_level = level;
+    ptr->key = key2;
+    ptr->childkey = childkey2;
+    ptr->leftchild = NULL;
+    ptr->rightchild = NULL;
+    if (*tree == NULL)
+    {
+        *tree = ptr;
+        parentptr = ptr;
+    }
+    else
+    {
+        if (searchtreeptr && searchtreeptr ->tree_level + 1 == ptr->tree_level)
+        {
+            searchtreeptr->leftchild = ptr;
+            parentptr = ptr;
+        }
+        else
+        {
+            parentptr->rightchild = ptr;
+            parentptr = ptr;
+        }
     }
 }
 
-void push(int value) {
-    struct stack *newPtr;
-    newPtr = malloc(sizeof(struct stack));
-    if (newPtr != NULL) {
-        newPtr->key = value;
-        newPtr->next = top;
-        top = newPtr;
-        count++;
+void search(Tree* tree, int key2)
+{
+    if (tree != NULL)
+    {
+        if (tree->childkey == key2)
+        {
+            searchtreeptr = tree;
+            return;
+        }
+        search(tree->leftchild, key2);
+        search(tree->rightchild, key2);
     }
 }
 
-int pop() {
-    int popValue;
-    popValue = top->key;
-    top = top->next;
-    count--;
-    return popValue;
-}
 
-int stack_empty() {
-    if (top == NULL) {
-        return 1;
-    } else {
-        return 0;
+void Preorder(Tree* tree)
+{
+    if (tree)
+    {
+        printf("%d\n", tree->key);
+        Preorder(tree->leftchild);
+        Preorder(tree->rightchild);
     }
 }
-
-int stack_full() {
-    if (count >= SIZE) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
-//#include <stdio.h>
-//#include <stdlib.h>
-//#define SIZE 10
-//
-//typedef struct node
-//{
-//    int key;
-//    struct node *next;
-//} Node;
-//
-//typedef struct stack
-//{
-//    Node *top;
-//} Stack;
-//
-//void push(Stack *stack, int key);
-//int pop(Stack *stack);
-//int stack_full();
-//int stack_empty(Stack *stack);
-//
-//int count = 0;
-//
-//int main()
-//{
-//    int key;
-//    int num;
-//    Stack *stack = NULL;
-//
-//    printf("*Enter Number*\n1.push\n2.pop\n4.End program\n?: ");
-//    scanf("%d", &num);
-//    while (num != 4)
-//    {
-//        switch (num)
-//        {
-//            case 1:
-//                printf("insert DATA : ");
-//                scanf("%d", &key);
-//                push(&stack, key);
-//                break;
-//            case 2:
-//                pop(&stack);
-//                break;
-//        }
-//        printf("? : ");
-//        scanf("%d", &num);
-//
-//    }
-//}
-//
-//void push(Stack *stack, int key) {
-//    if (stack_full()) {
-//        printf("Stack is full\n");
-//    } else {
-//        Node *start = (Node *) malloc(sizeof(Node));
-//        if (start == NULL) {
-//            printf("Memory not allocated");
-//        }
-//        start->key = key;
-//        start->next = stack->top;
-//        stack->top = start;
-//        count++;
-//    }
-//}
-//
-//int pop(Stack *stack)
-//{
-//    Node *temp;
-//    if (stack_empty(stack))
-//    {
-//        printf("stack is empty\n");
-//        return 0;
-//    }
-//    temp = stack->top;
-//    stack->top = stack->top->next;
-//    free(temp);
-//    printf("POP!\n");
-//    count --;
-//    return 1;
-//}
-//
-//int stack_empty(Stack *stack)
-//{
-//    if (stack->top == NULL)
-//    {
-//        return 1;
-//    }
-//    else
-//        return 0;
-//}
-//
-//int stack_full(){
-//    if(count >= SIZE){
-//        return 1;
-//    }
-//    else
-//        return 0;
-//}
-//
