@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#define RMAX 100
 
 typedef struct node
 {
@@ -9,10 +11,13 @@ typedef struct node
 }node;
 
 node *insert(node *,int);
-node *Delete(node *,int);
-void preorder(node *);
-void inorder(node *);
-int height( node *);
+
+void inorder_1(node *);
+void inorder_2(node *);
+void inorder_3(node *);
+void inorder_4(node *);
+void inorder_5(node *);
+int height(node *);
 node *rotateright(node *);
 node *rotateleft(node *);
 node *RR(node *);
@@ -21,52 +26,50 @@ node *LR(node *);
 node *RL(node *);
 int BF(node *);
 
+int max = 0;
+
 int main()
 {
     node *root=NULL;
     int x,n,i,op;
+    int arr[200];
+    srand((time(NULL)));
 
-    do
+    //Random array
+    for (int i=2; i<200; i++) {
+        int random_no = 1 + (int) rand() % RMAX;
+        arr[i] = random_no;
+    }
+    arr[0] = 15;
+    arr[1] = 50;
+
+
+    //Insert 100 unique key
+    root=NULL;
+    for(i=0;i<100;i++)
     {
-        printf("\n1)Create:");
-        printf("\n2)Insert:");
-        printf("\n3)Delete:");
-        printf("\n4)Print:");
-        printf("\n5)Quit:");
-        printf("\n\nEnter Your Choice:");
-        scanf("%d",&op);
+        root=insert(root,arr[i]);
+    }
 
-        switch(op)
-        {
-            case 1: printf("\nEnter no. of elements:");
-                scanf("%d",&n);
-                printf("\nEnter tree data:");
-                root=NULL;
-                for(i=0;i<n;i++)
-                {
-                    scanf("%d",&x);
-                    root=insert(root,x);
-                }
-                break;
+    printf("\n<Search the tree keys 15, 20, 50, 70, 90>\n");
+    inorder_1(root);
+    printf("\n");
 
-            case 2: printf("\nEnter a data:");
-                scanf("%d",&x);
-                root=insert(root,x);
-                break;
+    inorder_2(root);
+    printf("<Higest Key : %d>",max);
+    printf("\n");
 
-            case 3: printf("\nEnter a data:");
-                scanf("%d",&x);
-                root=Delete(root,x);
-                break;
+    printf("\n<Keys < 15>\n");
+    inorder_3(root);
+    printf("\n");
 
-            case 4: printf("\nPreorder sequence:\n");
-                preorder(root);
-                printf("\n\nInorder sequence:\n");
-                inorder(root);
-                printf("\n");
-                break;
-        }
-    }while(op!=5);
+    printf("\n<Keys > 50>\n");
+    inorder_4(root);
+    printf("\n");
+
+    printf("\n<Keys between 15 and 50>\n");
+    inorder_5(root);
+    printf("\n");
 
     return 0;
 }
@@ -103,60 +106,6 @@ node * insert(node *T,int x)
 
     T->ht=height(T);
 
-    return(T);
-}
-
-node * Delete(node *T,int x)
-{
-    node *p;
-
-    if(T==NULL)
-    {
-        return NULL;
-    }
-    else
-    if(x > T->data)		// insert in right subtree
-    {
-        T->right=Delete(T->right,x);
-        if(BF(T)==2)
-            if(BF(T->left)>=0)
-                T=LL(T);
-            else
-                T=LR(T);
-    }
-    else
-    if(x<T->data)
-    {
-        T->left=Delete(T->left,x);
-        if(BF(T)==-2)	//Rebalance during windup
-            if(BF(T->right)<=0)
-                T=RR(T);
-            else
-                T=RL(T);
-    }
-    else
-    {
-        //data to be deleted is found
-        if(T->right!=NULL)
-        {	//delete its inorder succesor
-            p=T->right;
-
-            while(p->left!= NULL)
-                p=p->left;
-
-            T->data=p->data;
-            T->right=Delete(T->right,p->data);
-
-            if(BF(T)==2)//Rebalance during windup
-                if(BF(T->left)>=0)
-                    T=LL(T);
-                else
-                    T=LR(T);\
-				}
-        else
-            return(T->left);
-    }
-    T->ht=height(T);
     return(T);
 }
 
@@ -251,22 +200,81 @@ int BF(node *T)
     return(lh-rh);
 }
 
-void preorder(node *T)
+
+void inorder_1(node *T)
 {
     if(T!=NULL)
     {
-        printf("%d(Bf=%d)",T->data,BF(T));
-        preorder(T->left);
-        preorder(T->right);
+        inorder_1(T->left);
+        if(T->data == 15) {
+            printf("15 Found\n");
+        }
+
+        if(T->data == 20) {
+            printf("20 found\n");
+        }
+
+        if(T->data == 50) {
+            printf("50 found\n");
+        }
+
+        if(T->data == 70) {
+            printf("70 found\n");
+        }
+
+        if(T->data == 90) {
+            printf("90 found\n");
+        }
+
+        inorder_1(T->right);
     }
 }
 
-void inorder(node *T)
+void inorder_2(node *T)
 {
     if(T!=NULL)
     {
-        inorder(T->left);
-        printf("%d(Bf=%d)",T->data,BF(T));
-        inorder(T->right);
+        inorder_2(T->left);
+        max = T->data;
+        if(max < T->data){
+            max = T->data;
+        }
+        inorder_2(T->right);
+    }
+}
+
+void inorder_3(node *T)
+{
+    if(T!=NULL)
+    {
+        inorder_3(T->left);
+        if(T->data < 15) {
+            printf("%d ", T->data);
+        }
+        inorder_3(T->right);
+    }
+}
+
+void inorder_4(node *T)
+{
+    if(T!=NULL)
+    {
+        inorder_4(T->left);
+        if(T->data > 50) {
+            printf("%d ", T->data);
+        }
+        inorder_4(T->right);
+    }
+}
+
+void inorder_5(node *T)
+{
+    if(T!=NULL)
+    {
+        inorder_5(T->left);
+        if((T->data > 15) && T->data < 50) {
+            printf("%d ", T->data);
+        }
+        inorder_5(T->right);
     }
 }
