@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -84,7 +85,7 @@ node * insert(node *T,int x)
         T->right=NULL;
     }
     else
-    if(x > T->data)		// insert in right subtree
+    if(x > T->data)       // insert in right subtree
     {
         T->right=insert(T->right,x);
         if(BF(T)==-2)
