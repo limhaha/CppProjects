@@ -1,26 +1,34 @@
 #include <iostream>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
-
 int main(){
-    int a, b, c;
-    int result;
-    int arr[10] = {0};
+    int c, n;
+    int score[1000];
 
-    cin >> a;
-    cin >> b;
     cin >> c;
 
-    result = a * b * c;
+    for(int i=0; i<c; i++){
+        cin >> n;
+        int sum = 0;
+        double mean;
+        int cnt = 0;
+        for(int j=0; j<n; j++){
+            cin >> score[j];
+            sum += score[j];
+        }
+        mean = (double)sum / n;
 
-    while(result != 0){
-        arr[result % 10] += 1;
-        result /= 10;
+        for(int j=0; j<n; j++){
+            if(mean < score[j]) cnt++;
+        }
+
+        cout << fixed;
+        cout.precision(3);
+        cout << (double)cnt/n * 100 << '%' << endl;
     }
-    for(int i=0; i<10; i++){
-        cout <<arr[i] << endl;
-    }
+
     return 0;
 }
