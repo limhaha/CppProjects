@@ -29,11 +29,11 @@ int main(){
     return 0;
 }
 
-int d(int n){
+int d(int n) {
     int num = n;
-    do{
+    do {
         num += n % 10;
-    } while ((n/=10) != 0);
+    } while ((n /= 10) != 0);
 
     return num;
 }
