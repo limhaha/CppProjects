@@ -29,6 +29,8 @@ int main(){
     return 0;
 }
 
+
+
 int d(int n) {
     int num = n;
     do {
