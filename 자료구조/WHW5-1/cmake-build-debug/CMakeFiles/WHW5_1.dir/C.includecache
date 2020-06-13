@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/Users/halim/CLionProjects/PHW1-2/main.c
+/Users/halim/CLionProjects/자료구조/WHW5-1/main.c
 stdio.h
+-
+stdlib.h
+-
+string.h
 -
 
