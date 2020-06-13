@@ -46,13 +46,14 @@ void PrintAllHashData(){
 
 void DelHashData(char id[]){
     int sum = 0;
-
+    printf("%s", id);
     for(int j=0; j<10; j++){
         sum += id[j];
     }
     
     int hash_key = HASH_KEY(sum);
     printf("%d", hash_key);
+
     if(hashTable[hash_key] == NULL){
         return;
     }
@@ -110,7 +111,6 @@ Node* FindHashData(char *id){
 
 
 int main(){
-    char saveidx[10][101] = {0, };
     FILE *fp;
     char buff[100];
     
@@ -122,23 +122,25 @@ int main(){
         int i = 0;
         while (!feof(fp)){
             if(i == 20) break;
-            fgets(buff, 100, fp);
+            fgets(buff, sizeof(buff), fp);
+
             Node* node = (Node*)malloc(sizeof(Node));
             strcpy(node->id, buff);
-            
             node->hashNext = NULL;
             int sum = 0;
             
             for(int j=0; j<10; j++){
                 sum += node->id[j];
             }
-            AddHashData(sum-23, node);
-            saveidx[10][i] = node->id;
+
             printf("%d 아스키 코드값을 더한값 : %d\n", i+1, sum-23);
+
+            AddHashData(sum-23, node);
+
             i++;
         }
     }
-    
+    fclose(fp);
 //    int keyList[8] = {20, 38, 175, 182, 90, 100, 34, 202};
 //    for(int i=0; i<8; i++){
 //        Node* node = (Node*) malloc(sizeof(Node));
@@ -148,10 +150,13 @@ int main(){
 //        saveidx[i] = node->id;
 //    }
     PrintAllHashData();
-    
-    printf("alalalal");
+
     DelHashData("Purple");
-//    
+    char strp[10] = "Purple";
+    printf("%d", strp);
+    printf("\n");
+    printf("%d", hashTable[5]->id);
+    printf("d");
 //    PrintAllHashData();
     return 0;
     
