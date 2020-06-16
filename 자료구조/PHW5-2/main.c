@@ -108,28 +108,28 @@ int main() {
 //        printf("----------------\n");
 //    }
 
-//    int quick1[15];
-//    for(int i=0; i<15; i++){
-//        quick1[i] = t1[i].columns[2];
-//    }
-//    quick_sort(quick1, 0, 15-1);
-//    for(int i = 0 ; i < 15; i ++) {
-//        t1[i].columns[2] = quick1[i];
-//    }
-//
-//    printf("Quick Sort \n<TABLE 1 on Column3>\n");
-//    printf("----------------\n");
-//    for(int i=0; i<15; i++){
-//        for(int j=0; j<3; j++){
-//            printf("|%3d ", t1[i].columns[j]);
-//        }
-//        printf("|");
-//        printf("\n");
-//        printf("----------------\n");
-//    }
-//
-//    printf("\n\n");
-//
+    int quick1[15];
+    for(int i=0; i<15; i++){
+        quick1[i] = t1[i].columns[2];
+    }
+    quick_sort(quick1, 0, 15-1);
+    for(int i = 0 ; i < 15; i ++) {
+        t1[i].columns[2] = quick1[i];
+    }
+
+    printf("Quick Sort \n<TABLE 1 on Column3>\n");
+    printf("----------------\n");
+    for(int i=0; i<15; i++){
+        for(int j=0; j<3; j++){
+            printf("|%3d ", t1[i].columns[j]);
+        }
+        printf("|");
+        printf("\n");
+        printf("----------------\n");
+    }
+
+    printf("\n\n");
+
 
     int quick2[10];
     for(int i=0; i<10; i++){

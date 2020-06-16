@@ -106,6 +106,7 @@ int main(){
     for(i=0;i<10;i++)
         a+=str[i];
     printf("ASCII코드값을 더한 값 : %d\n", a);
+    printf("모듈러값 : %d", a%33);
     return 0;
 
 }

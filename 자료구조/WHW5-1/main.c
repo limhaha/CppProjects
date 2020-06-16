@@ -10,7 +10,14 @@ typedef struct Node{
     struct Node* hashNext;
 }Node;
 
+void AddHashData(int key, Node* node);
+void InsertHashData(char id[]);
+void PrintAllHashData();
+void DelHashData(char id[]);
+int SearchHashData(char id[]);
+
 Node* hashTable[MAX_HASH];
+
 
 void AddHashData(int key, Node* node){
     int hash_key = HASH_KEY(key);
@@ -24,35 +31,67 @@ void AddHashData(int key, Node* node){
     }
 }
 
+int insert_key;
+void InsertHashData(char id[]){
+    printf("INSERT %s\n", id);
+    if(SearchHashData(id)){
+        printf("Exist!\n");
+        return;
+    }
+
+    Node* Insertnode = (Node*)malloc(sizeof(Insertnode));
+    strcpy(Insertnode->id, id);
+
+    insert_key = 0;
+    printf("%s\n", Insertnode->id);
+
+    for(int j=0; j<strlen(Insertnode->id); j++){
+        insert_key += Insertnode->id[j];
+    }
+
+
+    int hash_key = HASH_KEY(insert_key);
+
+    if(hashTable[hash_key] == NULL){
+        hashTable[hash_key] = Insertnode;
+    }
+    else{
+        Insertnode->hashNext = hashTable[hash_key];
+        hashTable[hash_key]= Insertnode;
+    }
+    printf("Inserted!\n");
+}
+
+
 void PrintAllHashData(){
-    printf("Print HASH DATA\n");
+    printf("<Print HASH DATA>");
     for(int i=0; i<MAX_HASH; i++){
-        printf("<idx: %d>\n", i);
+        printf("\nidx %d : ", i);
         if(hashTable[i] != NULL){
             Node* node = hashTable[i];
             while (node->hashNext){
-                printf("%s", node->id);
+                printf("%s ", node->id);
                 node = node->hashNext;
             }
             printf("%s", node->id);
         }
         else{
-            printf("NULL\n");
+            printf("NULL");
         }
     }
     printf("\n\n");
 }
 
-
+int sum_del;
 void DelHashData(char id[]){
-    int sum = 0;
-    printf("%s", id);
-    for(int j=0; j<10; j++){
-        sum += id[j];
+    sum_del = 0;
+    printf("DELETE %s\n", id);
+
+    for(int j=0; j<strlen(id); j++){
+        sum_del += id[j];
     }
-    
-    int hash_key = HASH_KEY(sum);
-    printf("%d", hash_key);
+
+    int hash_key = HASH_KEY(sum_del);
 
     if(hashTable[hash_key] == NULL){
         return;
@@ -63,6 +102,7 @@ void DelHashData(char id[]){
     if (strcmp(hashTable[hash_key]->id, id) == 0){
         delNode = hashTable[hash_key];
         hashTable[hash_key] = hashTable[hash_key]->hashNext;
+        printf("Deleted!\n");
     }
     else{
         Node* node = hashTable[hash_key];
@@ -71,49 +111,59 @@ void DelHashData(char id[]){
             if(strcmp(next->id, id) == 0){
                 node->hashNext = next->hashNext;
                 delNode = next;
+                printf("Deleted!\n");
                 break;
             }
             node = next;
             next = node->hashNext;
+            printf("Not Found!\n");
         }
     }
     free(delNode);
 }
 
+int sum_srch;
+int SearchHashData(char id[]){
+    sum_srch = 0;
+//    printf("SEARCH %s\n", id);
 
-Node* FindHashData(char *id){
-    int sum = 0;
-
-    for(int j=0; j<10; j++){
-        sum += id[j];
+    for(int j=0; j<strlen(id); j++){
+        sum_srch += id[j];
     }
-    printf("%d", sum);
-    
-    int hash_key = HASH_KEY(sum);
+
+
+    int hash_key = HASH_KEY(sum_srch);
+
     if(hashTable[hash_key] == NULL){
-        return NULL;
+//        printf("Not Found!\n");
+        return 0;
     }
 
-    if(hashTable[hash_key]->id == id){
-        return hashTable[hash_key];
+    if (strcmp(hashTable[hash_key]->id, id) == 0){
+//        printf("Found!\n");
+        return 1;
     }
     else{
         Node* node = hashTable[hash_key];
-        while (node-> hashNext){
-            if(node->hashNext->id == id){
-                return node->hashNext;
+        while (node->hashNext){
+            if(strcmp(node->hashNext->id, id) == 0){
+//                printf("Found!\n");
+                return 1;
+                break;
             }
             node = node->hashNext;
+//            printf("Not Found!\n");
+            return 0;
         }
     }
-    return 0;
+
 }
 
 
 int main(){
     FILE *fp;
     char buff[100];
-    
+
     fp = fopen("/Users/halim/CLionProjects/자료구조/WHW5-1/keyinput.txt", "r");
     if(fp == NULL){
         printf("File cannot be opened\n");
@@ -122,9 +172,10 @@ int main(){
         int i = 0;
         while (!feof(fp)){
             if(i == 20) break;
-            fgets(buff, sizeof(buff), fp);
-
+            fscanf(fp, "%s", buff);
+//            fgets(buff, sizeof(buff), fp);
             Node* node = (Node*)malloc(sizeof(Node));
+
             strcpy(node->id, buff);
             node->hashNext = NULL;
             int sum = 0;
@@ -133,31 +184,56 @@ int main(){
                 sum += node->id[j];
             }
 
-            printf("%d 아스키 코드값을 더한값 : %d\n", i+1, sum-23);
 
-            AddHashData(sum-23, node);
+            AddHashData(sum, node);
 
             i++;
         }
     }
-    fclose(fp);
-//    int keyList[8] = {20, 38, 175, 182, 90, 100, 34, 202};
-//    for(int i=0; i<8; i++){
-//        Node* node = (Node*) malloc(sizeof(Node));
-//        node->id = keyList[i];
-//        node->hashNext = NULL;
-//        AddHashData(node->id, node);
-//        saveidx[i] = node->id;
-//    }
-    PrintAllHashData();
 
-    DelHashData("Purple");
-    char strp[10] = "Purple";
-    printf("%d", strp);
-    printf("\n");
-    printf("%d", hashTable[5]->id);
-    printf("d");
-//    PrintAllHashData();
+
+    int opt;
+    char str[10];
+    printf("1.INSERT  2.DELETE  3.SEARCH  4.PRINT \n");
+
+    while(opt != 5) {
+        printf("Enter Option : ");
+        scanf("%d", &opt);
+        switch (opt) {
+            case 1 :
+                printf("Type String for INSERT : ");
+                scanf("%s", str);
+                printf("\n");
+                InsertHashData(str);
+                break;
+
+            case 2 :
+                printf("Type String for DELETE : ");
+                scanf("%s", str);
+                printf("\n");
+                DelHashData(str);
+                break;
+
+            case 3 :
+                printf("Type String for SEARCH : ");
+                scanf("%s", str);
+                printf("\n");
+                printf("SEARCH %s\n", str);
+                if (SearchHashData(str)) {
+                    printf("FOUND!\n");
+                } else {
+                    printf("Not Found!\n");
+                }
+                break;
+
+            case 4 :
+                PrintAllHashData();
+                break;
+        }
+        printf("\n");
+    }
+
+    fclose(fp);
     return 0;
     
 }
