@@ -98,15 +98,24 @@
 
 #include <stdio.h>
 
-int main(){
-    char str[10]={0};
-    int a=0, i;
-    printf("10개 이하의 영문 소문자를 공백없이 입력>>");
-    scanf("%s", str);
-    for(i=0;i<10;i++)
-        a+=str[i];
-    printf("ASCII코드값을 더한 값 : %d\n", a);
-    printf("모듈러값 : %d", a%33);
-    return 0;
+//int main(){
+//    char str[10]={0};
+//    int a=0, i;
+//    printf("10개 이하의 영문 소문자를 공백없이 입력>>");
+//    scanf("%s", str);
+//    for(i=0;i<10;i++)
+//        a+=str[i];
+//    printf("ASCII코드값을 더한 값 : %d\n", a);
+//    printf("모듈러값 : %d", a%33);
+//    return 0;
+//
+//}
 
+int main(){
+    int num;
+    while(num != -1){
+    scanf("%d", &num);
+    printf("1+ %d 모듈러 5 = %d\n", num, 1+ num%5);
+        }
+    return 0;
 }
