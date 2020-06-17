@@ -192,7 +192,7 @@ int main(){
     }
 
 
-    int opt;
+    int opt = 0;
     char str[10];
     printf("1.INSERT  2.DELETE  3.SEARCH  4.PRINT \n");
 
